@@ -10,6 +10,7 @@ feature 'manage items' do
 
     visit('/')
     expect(page).to have_title "Our Awesome Index Page"
+    expect(page).to_not have_content "soup"
     click_on("Add New Item")
     expect(page).to have_title "Add Awesome Item"
 
