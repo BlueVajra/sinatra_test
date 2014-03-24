@@ -16,6 +16,8 @@ feature 'manage items' do
     fill_in 'new_item', with:'soup'
     click_on('Submit')
     expect(page).to have_title "Our Awesome Index Page"
+
+    expect(page).to have_content "soup"
   end
 
 end

@@ -4,6 +4,13 @@
   <title>Our Awesome Index Page</title>
 </head>
 <body>
+<h1>Our Item Page</h1>
 <a href="/item/new">Add New Item</a>
+
+<ul>
+  <% items.each do |item| %>
+    <li><%= item %></li>
+  <% end %>
+</ul>
 </body>
 </html>
