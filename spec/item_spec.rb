@@ -6,7 +6,7 @@ Capybara.app = App
 
 feature 'manage items' do
 
-  scenario 'managing items list' do
+  scenario 'adding to items list' do
 
     visit('/')
     expect(page).to have_title "Our Awesome Index Page"
@@ -19,6 +19,13 @@ feature 'manage items' do
     expect(page).to have_title "Our Awesome Index Page"
 
     expect(page).to have_content "soup"
+
+  # add more items (3 more)
+  #  check index to see if there
+  #  delete item 2
+  #  check to make sure others are there, but item t is not  
+
+
   end
 
 end
