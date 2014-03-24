@@ -10,4 +10,7 @@ class App < Sinatra::Base
     erb :new_item
   end
 
+  post '/' do
+    redirect('/')
+  end
 end
