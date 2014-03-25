@@ -1,10 +1,12 @@
 require 'sinatra/base'
+require './lib/item_repository'
 
 class App < Sinatra::Application
-  ITEM_ARRAY = []
+
+  ITEM_REPOSITORY = ItemRepository.new
 
   get '/' do
-    erb :index, locals: {:items => ITEM_ARRAY}
+    erb :index, locals: {:items => ITEM_REPOSITORY.items}
   end
 
   get '/item/new' do
@@ -12,33 +14,21 @@ class App < Sinatra::Application
   end
 
   post '/' do
-    ITEM_ARRAY << params[:new_item]
+    ITEM_REPOSITORY.add(params[:new_item])
     redirect('/')
   end
 
   get '/item/:id' do
-    erb :item, locals: {:item_name => params[:id]} # hash-key => hash-value  which is a hash {key => value}
+    erb :item, locals: {:item_name => params[:id]}
   end
 
   put '/item/:old_item' do
-    ITEM_ARRAY.each_with_index do |item, index|
-      if item == params[:old_item]
-        ITEM_ARRAY[index] = params[:edit_item]
-      end
-    end
+    ITEM_REPOSITORY.edit(params[:old_item], params[:edit_item])
     redirect('/')
   end
 
   delete '/item/:old_item' do
-    #ITEM_ARRAY.delete_if {|item| item == params[:old_item] }
-    ITEM_ARRAY.delete(params[:old_item])
-    #index_to_delete = nil
-    #ITEM_ARRAY.each_with_index do |item, index|
-    #  if item == params[:old_item]
-    #    index_to_delete = index
-    #  end
-    #end
-    #ITEM_ARRAY.delete_at(index_to_delete)
+    ITEM_REPOSITORY.delete(params[:old_item])
     redirect('/')
   end
 

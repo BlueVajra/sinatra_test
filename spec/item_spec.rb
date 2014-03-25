@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'capybara/rspec'
 require_relative '../app'
+require_relative '../lib/item_repository'
 
 Capybara.app = App
 
