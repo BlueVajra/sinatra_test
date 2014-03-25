@@ -20,10 +20,25 @@ feature 'manage items' do
 
     expect(page).to have_content "soup"
 
+    click_on("Add New Item")
+    fill_in 'new_item', with:'chicken dumplings'
+    click_on('Submit')
+
+    click_on("Add New Item")
+    fill_in 'new_item', with:'calamari'
+    click_on('Submit')
+
+    #save_and_open_page
+
+    click_on("soup")
+    expect(page).to have_title "Item - soup"
+
+
   # add more items (3 more)
   #  check index to see if there
   #  delete item 2
-  #  check to make sure others are there, but item t is not  
+  #  check to make sure others are there, but item t is not
+
 
 
   end
