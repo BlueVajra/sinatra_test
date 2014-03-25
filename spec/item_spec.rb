@@ -37,9 +37,13 @@ feature 'manage items' do
     fill_in 'edit_item', with:'chicken soup'
     click_on('Edit')
     expect(page).to have_content "chicken soup"
+    #save_and_open_page
+    click_on('calamari')
+    click_on('Delete')
+    expect(page).to have_title "Our Awesome Index Page"
+    expect(page).to_not have_content "calamari"
+
     save_and_open_page
-
-
 
   # add more items (3 more)
   #  check index to see if there
