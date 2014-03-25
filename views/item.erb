@@ -4,9 +4,9 @@
   <title>Item - <%= item_name %></title>
 </head>
 <body>
-<form action="/" method="post">
-  <input type="text" name="new_item" placeholder="New Item">
-  <input type="submit" value="Submit">
+<form action="/item/<%= item_name %>" method="post">
+  <input type="text" name="edit_item" value="<%= item_name %>">
+  <input type="submit" value="Edit">
 </form>
 </body>
 </html>

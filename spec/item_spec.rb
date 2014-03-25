@@ -32,6 +32,13 @@ feature 'manage items' do
 
     click_on("soup")
     expect(page).to have_title "Item - soup"
+    our_field = find_field('edit_item').value
+    expect(our_field ).to eq "soup"
+    fill_in 'edit_item', with:'chicken soup'
+    click_on('Edit')
+    expect(page).to have_content "chicken soup"
+    save_and_open_page
+
 
 
   # add more items (3 more)
